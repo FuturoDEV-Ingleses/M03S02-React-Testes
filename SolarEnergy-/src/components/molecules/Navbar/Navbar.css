@@ -1,0 +1,42 @@
+.Navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px 46px;
+  gap: 20px;
+}
+
+.Navbar img {
+  cursor: pointer;
+}
+
+.Navbar button {
+  padding: 16px 24px;
+  font-size: 18px;
+  line-height: 27px;
+  color: #A098AE;
+  background: none;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.Navbar button span {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.Navbar button.selected {
+  background: #4cbc9a;
+  color: #ffffff;
+}
+
+.Navbar button.selected img {
+  filter: brightness(200%) contrast(500%);
+}
