@@ -1,13 +1,22 @@
-/* eslint-disable no-undef */
 import { render, screen } from "@testing-library/react";
 import Joke from "./Joke";
 import { MOCKED_JOKE } from "../.jest/mocks";
 
+// como o componente Joke está separado do componente Count, podemos fazer a chamada fetch apenas aqui
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    json: () => Promise.resolve(MOCKED_JOKE),
+  })
+);
+
 describe("Joke", () => {
-  test("deveria ter um título com o texto Chuck Norris Jokes na tela", () => {
+
+  // Esse teste funciona sem ser async, pois não temos nenhuma chamada assíncrona
+  // Mas sem async gera um warning no console, por conta do useEffect que roda toda vez que o componente é montado
+  test("deveria ter um título com o texto Chuck Norris Jokes na tela", async () => {
     render(<Joke />);
 
-    const title = screen.getByRole("heading", { name: "Chuck Norris Jokes" });
+    const title = await screen.findByRole("heading", { name: "Chuck Norris Jokes" });
     expect(title).toBeInTheDocument();
   });
 

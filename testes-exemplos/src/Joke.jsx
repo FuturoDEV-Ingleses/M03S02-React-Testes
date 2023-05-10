@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function Piada() {
+export default function Joke() {
   const [joke, setJoke] = useState("");
 
   useEffect(() => {
