@@ -27,7 +27,7 @@ function renderComponent() {
   return { logo, dahboardButton, unitsButton, registrationButton };
 }
 
-describe("Nabar", () => {
+describe("Navbar", () => {
   test("se o componente é renderizado corretamente: com logo e 3 botões/links", () => {
     const { logo, dahboardButton, unitsButton, registrationButton } =
       renderComponent();
@@ -62,6 +62,14 @@ describe("Nabar", () => {
     expect(mockedUsedNavigate).toHaveBeenCalledWith("/cadastro");
 
     await user.click(dahboardButton);
+    expect(mockedUsedNavigate).toHaveBeenCalledWith("/");
+  });
+
+  test("se a rota é alterada para a default quando clica no logo", async () => {
+    const user = userEvent.setup();
+    const { logo } = renderComponent();
+
+    await user.click(logo);
     expect(mockedUsedNavigate).toHaveBeenCalledWith("/");
   });
 });
